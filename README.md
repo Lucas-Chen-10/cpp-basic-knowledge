@@ -10,6 +10,5 @@ Dog run()
 ~Dog()
 ~Animal()
 ```
-
 ## Dependences
 - [virtual-func](https://github.com/Lucas-Chen-10/cpp-basic-knowledge/blob/main/virtual-func.cpp)
