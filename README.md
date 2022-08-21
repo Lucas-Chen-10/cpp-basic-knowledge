@@ -28,6 +28,9 @@ shared_ptr<T> ptr(new T);
 4. 如果引用计数为0，则释放该资源
 
 #### 简单使用
-
+基本语法和常见错误使用情况
+- [shared_ptr_used](https://github.com/Lucas-Chen-10/cpp-basic-knowledge/blob/main/shared_ptr_used.cpp)
 
 #### 简单实现shared_ptr
+实现一个线程安全的shared_ptr智能指针
+- [shared_ptr](https://github.com/Lucas-Chen-10/cpp-basic-knowledge/blob/main/shared_ptr.cpp)
