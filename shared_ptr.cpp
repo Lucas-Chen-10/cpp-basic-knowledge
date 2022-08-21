@@ -8,11 +8,11 @@ class shared_ptr
 {
     public:
     //普通类初始化
-    shared_ptr(T *ptr = nullptr):_pPtr(ptr),_pRefCount(new int(1)),_pMutex(new mutex())
+    shared_ptr(T *ptr = nullptr):_pPtr(ptr),_pRefCount(new unsigned int(1)),_pMutex(new mutex())
     {}
 
     //智能指针初始化
-    shared_ptr(const shared_ptr<T> & sp):
+    explicit shared_ptr(const shared_ptr<T> & sp):
         _pPtr(sp._pPtr),
         _pRefCount(sp._pRefCount),
         _pMutex(sp._pMutex)
@@ -52,7 +52,7 @@ class shared_ptr
         return _pPtr;
     }
 
-    int UseCount() {return *_pRefCount;}
+    unsigned int UseCount() {return *_pRefCount;}
 
     T * Get(){return _pPtr;}
 
@@ -85,7 +85,7 @@ class shared_ptr
 
     private:
     T *_pPtr;
-    int *_pRefCount;
+    unsigned int *_pRefCount;
     mutex *_pMutex;
 };
 
@@ -100,6 +100,9 @@ int main()
 
     shared_ptr<char> p3(p2);
     cout << "user_cout:" << p3.UseCount() << endl;
+
+    //shared_ptr<int> p4(new char);
+    //cout << "user_cout:" << p4.UseCount() << endl;
 
     return 0;
 }
