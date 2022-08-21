@@ -75,5 +75,20 @@ int main()
         std::cout << "ptr7引用计数：" << ptr7.use_count() << std::endl;  //2
     }
 
+    /*=======================weak_ptr使用======================*/
+    std::cout << "=======================weak_ptr使用======================" << std::endl;
+    /*weak_ptr使用*/
+    std::shared_ptr<Test> ptr8(new Test);
+    std::weak_ptr<Test> ptr9(ptr8);
+    std::cout << "ptr8引用计数：" << ptr8.use_count() << std::endl;  //1
+    std::cout << "ptr9引用计数：" << ptr9.use_count() << std::endl;  //1
+    ptr8.reset(); //销毁ptr8
+    std::cout << "ptr9是否被销毁：" << (ptr9.expired() ? "是" : "否") << std::endl; //ptr9已经被销毁
+    /*循环引用的案例里面，可以使用weak_ptr解决，这样就不会再次计数
+    将类中的std::shared_ptr<Test2> ptr;替换为std::weak_ptr<Test2> ptr;
+    std::shared_ptr<Test> ptr;替换为std::weak_ptr<Test> ptr;*/
+
+
+
     return 0;
 }

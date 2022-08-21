@@ -34,3 +34,12 @@ shared_ptr<T> ptr(new T);
 #### 简单实现shared_ptr
 实现一个线程安全的shared_ptr智能指针
 - [shared_ptr](https://github.com/Lucas-Chen-10/cpp-basic-knowledge/blob/main/shared_ptr.cpp)
+
+### weak_ptr
+它指向一个由 shared_ptr 管理的对象而不影响所指对象的生命周期，也就是将一个 weak_ptr 绑定到一个 shared_ptr 不会改变 shared_ptr 的引用计数。
+```cpp
+weak_ptr<T> ptr(new T); 
+```
+
+#### 简单使用
+- [shared_ptr_used](https://github.com/Lucas-Chen-10/cpp-basic-knowledge/blob/main/shared_ptr_used.cpp)
