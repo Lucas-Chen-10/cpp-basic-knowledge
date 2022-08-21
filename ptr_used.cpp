@@ -88,7 +88,19 @@ int main()
     将类中的std::shared_ptr<Test2> ptr;替换为std::weak_ptr<Test2> ptr;
     std::shared_ptr<Test> ptr;替换为std::weak_ptr<Test> ptr;*/
 
-
+    /*=======================unique_ptr======================*/
+    std::cout << "=======================unique_ptr======================" << std::endl;
+    /*unique_ptr使用*/
+    {
+        std::unique_ptr<int> t1(new int(1));//ok
+        //std::unique_ptr<int> up2 = new int(1);//error: conversion from ‘int*’ to non-scalar type ‘std::unique_ptr<int>’ requested
+        int* pw = new int;
+        std::unique_ptr<int> t2(pw);//ok
+        /*不可以对unique_ptr执行copy或者assign操作，只能move*/
+        //std::unique_ptr<int> t3(pw);//free(): double free detected in tcache 2,这个是运行期错误，程序员必须避免这样的失误
+	    //std::unique_ptr<int> t4(t2);// error: use of deleted function ‘std::unique_ptr<_Tp, _Dp>::unique_ptr(const std::unique_ptr<_Tp, _Dp>&) [with _Tp = int; _Dp = std::default_delete<int>]’
+	    std::unique_ptr<int> t5(move(t2));//ok  
+    }
 
     return 0;
 }

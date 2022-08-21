@@ -27,19 +27,20 @@ shared_ptr<T> ptr(new T);
 3. 析构函数调用时，计数会减1
 4. 如果引用计数为0，则释放该资源
 
-#### 简单使用
-基本语法和常见错误使用情况
-- [shared_ptr_used](https://github.com/Lucas-Chen-10/cpp-basic-knowledge/blob/main/shared_ptr_used.cpp)
-
-#### 简单实现shared_ptr
-实现一个线程安全的shared_ptr智能指针
-- [shared_ptr](https://github.com/Lucas-Chen-10/cpp-basic-knowledge/blob/main/shared_ptr.cpp)
-
 ### weak_ptr
 它指向一个由 shared_ptr 管理的对象而不影响所指对象的生命周期，也就是将一个 weak_ptr 绑定到一个 shared_ptr 不会改变 shared_ptr 的引用计数。
 ```cpp
 weak_ptr<T> ptr(new T); 
 ```
 
-#### 简单使用
-- [shared_ptr_used](https://github.com/Lucas-Chen-10/cpp-basic-knowledge/blob/main/shared_ptr_used.cpp)
+### unique_ptr
+它实现了独享被管理对象指针的概念，这意味这它可确保一个对象和其对应的资源同一时间只被一个指针拥有。一旦拥有者被销毁或者变成empty或者开始拥有另一个对象，先前拥有的那个对象就会被销毁，其任何相应资源亦会被释放。
+```cpp
+unique_ptr<T> ptr(new T); 
+```
+
+### 简单使用
+- [ptr_used](https://github.com/Lucas-Chen-10/cpp-basic-knowledge/blob/main/ptr_used.cpp)
+### 简单实现shared_ptr
+实现一个线程安全的shared_ptr智能指针
+- [shared_ptr](https://github.com/Lucas-Chen-10/cpp-basic-knowledge/blob/main/shared_ptr.cpp)
